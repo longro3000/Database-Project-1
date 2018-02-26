@@ -1,0 +1,10 @@
+teaching by teacher per year (latest year default) like in Excel
+	select * from course, person inner join person_implementation on person.id=person_implementation.personid inner join implementation on person_implementation.implementationid where course.id=implementation.courseid;
+teaching by student group like in Excel (latest year default)
+	select * from course as c, subgroup as s inner join subgroup_implementation as si on s.id=si.subgroupid inner join implementation as i on i.id= si.implementationid where c.id = i.courseid; 
+Student groups by degree program
+	select * from subgroup as s, degreeprogram as d inner join group as g on d.id=g.degreeprogramid where s.groupid = g.id;
+Teachers by degree program (teacher can teach in several degree programs)
+	select * from person as p, degreeprogram as d inner join person_degreeprogram as pd on pd.personid=p.id where pd.degreeprogramid = d.id;
+Teaching by teacher per week (weeks 
+	
