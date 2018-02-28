@@ -78,9 +78,9 @@ WSGI_APPLICATION = 'tutorial.wsgi.application'
 DATABASES = {
 	'default': {
 	'ENGINE': 'django.db.backends.mysql',
-	'NAME': 'tka_2018',
-	'USER': 'tka',
-	'PASSWORD': 'WENBbjvjWwEM',
+	'NAME': 'e1601108_vamk',
+	'USER': 'e1601108',
+	'PASSWORD': 'QAyDCB743kW6',
 	'HOST': 'mysql.cc.puv.fi',
 	'PORT': '3306', 
 	}
@@ -127,12 +127,17 @@ STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
  os.path.join(BASE_DIR, "static"),
- 'C:\temp\python_django_rest\static',
+ 'U:\Database\Project\python_django_rest\static',
 ]
 
 REST_FRAMEWORK = {
-    'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.IsAdminUser',
-    ],
-    'PAGE_SIZE': 10
+ 'DEFAULT_RENDERER_CLASSES': [
+ 'rest_framework.renderers.JSONRenderer',
+ 'rest_framework.renderers.BrowsableAPIRenderer',
+ 'rest_framework_xml.renderers.XMLRenderer',
+ ],
+ 'DEFAULT_PERMISSION_CLASSES': [
+ 'rest_framework.permissions.IsAdminUser',
+ ],
+ 'PAGE_SIZE': 10
 }
