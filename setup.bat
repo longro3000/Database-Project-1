@@ -7,4 +7,3 @@ python -m pip install djangorestframework-xml
 python -m pip install djangorestframework-jsonapi
 echo all necessary framework's been installed
 echo installation completed
-python manage.py createsuperuser
