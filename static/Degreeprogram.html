@@ -1,3 +1,5 @@
+<button onclick="post()"> ADD NEW Degree program</button>
+<div id="form2"></div>
 <div id="Degreeprogram"></div>
 <div id="form"></div>
 <script>
@@ -35,6 +37,43 @@ function getDegreeprogram(url){
 	request.send();
 	arrayOfDegreeprogram = JSON.parse(request.responseText);
 	return arrayOfDegreeprogram;
+}
+function post(){
+	if(1){
+		var Degreeprogram = {code:"",name:"",};
+		//create form
+		var f = document.createElement("form");
+		f.setAttribute("id", "DegreeprogramForm");
+		var i = document.createElement("input"); //input element, text
+		i.setAttribute('type',"text");
+		i.setAttribute('value',Degreeprogram.code);
+		i.setAttribute('name',"code");
+		var i3 = document.createElement("input"); //input element, text
+		i3.setAttribute('type',"text");
+		i3.setAttribute('value',Degreeprogram.name);
+		i3.setAttribute('name',"name");
+
+
+		var l = document.createElement("label"); //input element, text
+		l.innerHTML = "Code";
+		f.appendChild(l);
+		l.setAttribute("for",i);
+		f.appendChild(i);
+		f.appendChild(document.createElement("br"));
+		var l3 = document.createElement("label"); //input element, text
+		l3.innerHTML = "name";
+		f.appendChild(l3);
+		l.setAttribute("for",i3);
+		f.appendChild(i3);
+		f.appendChild(document.createElement("br"));
+		var b = document.createElement("button"); //input element, text
+		var buttonurl = "Post1()";
+		b.setAttribute('onClick',buttonurl);
+		b. innerHTML ="Save Degreeprogram";
+		f.appendChild(b);
+		//console.log(String(f));
+		document.getElementById("form2").appendChild(f);
+	}
 }
 
 
@@ -83,7 +122,16 @@ function edit(url){
 }
 
 function deleteC(url){
-	alert("Delete " +url);
+	var request = new XMLHttpRequest();
+	var Degree= getDegreeprogram(url);
+	var code=Degree.code
+	var jsonData = '{"code":' + JSON.stringify(code) + '}';
+	request.open("DELETE", url, false);
+	request.setRequestHeader("Authorization", "Basic " + btoa("admin:password123"));
+	request.setRequestHeader("X-CSRFToken", readCookie("csrftoken"));
+	request.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+	request.send(jsonData);
+	listDegreeprograms()
 }
 
 function save(url){
@@ -99,9 +147,22 @@ function save(url){
 	request.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
 	request.send(JSON.stringify(DegreeprogramJson)); 
 	//alert(request.response);
-	window.location = "localhost:8000/Degreeprograms"; 
+	 
 }
-
+function Post1(){
+	var DegreeprogramJson = {};
+	DegreeprogramJson.code = document.getElementById("DegreeprogramForm").elements["code"].value;
+	DegreeprogramJson.name = document.getElementById("DegreeprogramForm").elements["name"].value;
+	//alert(JSON.stringify(DegreeprogramJson));
+	var request = new XMLHttpRequest();
+	request.open("POST","http://localhost:8111/Degreeprograms/" , false);
+	request.setRequestHeader("Authorization", "Basic " + btoa("admin:password123"));
+	request.setRequestHeader("X-CSRFToken", readCookie("csrftoken"));
+	request.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+	request.send(JSON.stringify(DegreeprogramJson)); 
+	//alert(request.response);
+	 
+}
 function readCookie(name) {
  var nameEQ = encodeURIComponent(name) + "=";
  var ca = document.cookie.split(';');

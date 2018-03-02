@@ -1,3 +1,5 @@
+<button onclick="post()"> ADD NEW COURSES</button>
+<div id="form2"></div>
 <div id="course"></div>
 <div id="form"></div>
 <script>
@@ -216,9 +218,170 @@ function edit(url){
 		document.getElementById("form").appendChild(f);
 	}
 }
+function post(){
+	if(1){
+		var course = {name:"", code:"", changes:"", languages:"", credit:"", size:"", p1:"", p2:"", p3:"", p4:"", p5:"", total:""};
+		//create form
+		var f = document.createElement("form");
+		f.setAttribute("id", "courseForm");
+		var i = document.createElement("input"); //input element, text
+		i.setAttribute('type',"text");
+		i.setAttribute('value',course.name);
+		i.setAttribute('name',"name");
+		var i3 = document.createElement("input"); //input element, text
+		i3.setAttribute('type',"text");
+		i3.setAttribute('value',course.code);
+		i3.setAttribute('name',"code");
+		var i4 = document.createElement("input"); //input element, text
+		i4.setAttribute('type',"text");
+		i4.setAttribute('value',course.changes);
+		i4.setAttribute('name',"changes");
+		var i5 = document.createElement("input"); //input element, text
+		i5.setAttribute('type',"text");
+		i5.setAttribute('value',course.languages);
+		i5.setAttribute('name',"languages");
+		var i6 = document.createElement("input"); //input element, text
+		i6.setAttribute('type',"text");
+		i6.setAttribute('value',course.credit);
+		i6.setAttribute('name',"credit");
+		var i7 = document.createElement("input"); //input element, text
+		i7.setAttribute('type',"text");
+		i7.setAttribute('value',course.size);
+		i7.setAttribute('name',"size");
+		var i8 = document.createElement("input"); //input element, text
+		i8.setAttribute('type',"text");
+		i8.setAttribute('value',course.p1);
+		i8.setAttribute('name',"p1");
+		var i9 = document.createElement("input"); //input element, text
+		i9.setAttribute('type',"text");
+		i9.setAttribute('value',course.p2);
+		i9.setAttribute('name',"p2");
+		var i10 = document.createElement("input"); //input element, text
+		i10.setAttribute('type',"text");
+		i10.setAttribute('value',course.p3);
+		i10.setAttribute('name',"p3");
+		var i11 = document.createElement("input"); //input element, text
+		i11.setAttribute('type',"text");
+		i11.setAttribute('value',course.p4);
+		i11.setAttribute('name',"p4");
+		var i12 = document.createElement("input"); //input element, text
+		i12.setAttribute('type',"text");
+		i12.setAttribute('value',course.p5);
+		i12.setAttribute('name',"p5");
+		var i13 = document.createElement("input"); //input element, text
+		i13.setAttribute('type',"text");
+		i13.setAttribute('value',course.total);
+		i13.setAttribute('name',"total");
 
+
+
+		var l = document.createElement("label"); //input element, text
+		l.innerHTML = "Name";
+		f.appendChild(l);
+		l.setAttribute("for",i);
+		f.appendChild(i);
+		f.appendChild(document.createElement("br"));
+		var l3 = document.createElement("label"); //input element, text
+		l3.innerHTML = "Code";
+		f.appendChild(l3);
+		l3.setAttribute("for",i3);
+		f.appendChild(i3);
+		f.appendChild(document.createElement("br"));
+		var l4 = document.createElement("label"); //input element, text
+		l4.innerHTML = "Changes";
+		f.appendChild(l4);
+		l4.setAttribute("for",i4);
+		f.appendChild(i4);
+		f.appendChild(document.createElement("br"));
+		var l5 = document.createElement("label"); //input element, text
+		l5.innerHTML = "Languages";
+		f.appendChild(l5);
+		l5.setAttribute("for",i5);
+		f.appendChild(i5);
+		f.appendChild(document.createElement("br"));
+		var l6 = document.createElement("label"); //input element, text
+		l6.innerHTML = "Credit";
+		f.appendChild(l6);
+		l6.setAttribute("for",i6);
+		f.appendChild(i6);
+		f.appendChild(document.createElement("br"));
+		var l7 = document.createElement("label"); //input element, text
+		l7.innerHTML = "Size";
+		f.appendChild(l7);
+		l7.setAttribute("for",i7);
+		f.appendChild(i7);
+		f.appendChild(document.createElement("br"));
+		var l8 = document.createElement("label"); //input element, text
+		l8.innerHTML = "p1";
+		f.appendChild(l8);
+		l8.setAttribute("for",i8);
+		f.appendChild(i8);
+		f.appendChild(document.createElement("br"));
+		var l9 = document.createElement("label"); //input element, text
+		l9.innerHTML = "p2";
+		f.appendChild(l9);
+		l9.setAttribute("for",i9);
+		f.appendChild(i9);
+		f.appendChild(document.createElement("br"));
+		var l10 = document.createElement("label"); //input element, text
+		l10.innerHTML = "p3";
+		f.appendChild(l10);
+		l10.setAttribute("for",i10);
+		f.appendChild(i10);
+		f.appendChild(document.createElement("br"));
+		var l11 = document.createElement("label"); //input element, text
+		l11.innerHTML = "p4";
+		f.appendChild(l11);
+		l11.setAttribute("for",i11);
+		f.appendChild(i11);
+		f.appendChild(document.createElement("br"));
+		var l12 = document.createElement("label"); //input element, text
+		l12.innerHTML = "p5";
+		f.appendChild(l12);
+		l12.setAttribute("for",i12);
+		f.appendChild(i12);
+		f.appendChild(document.createElement("br"));
+		var l13 = document.createElement("label"); //input element, text
+		l13.innerHTML = "total";
+		f.appendChild(l13);
+		l13.setAttribute("for",i13);
+		f.appendChild(i13);
+		f.appendChild(document.createElement("br"));
+		var l2 = document.createElement("label"); //input element, text
+		l2.innerHTML = "Curriculum";
+		f.appendChild(l2);
+
+		var i2 = document.createElement("select");
+		i2.setAttribute('name',"Curriculum");
+		var Curriculums = getCurriculums();
+		for(var i=0;i<Curriculums.length;i++){
+			var o2 = document.createElement("option");
+			o2.text = Curriculums[i].name;
+			o2.value = Curriculums[i].url;
+			i2.add(o2);
+			f.appendChild(i2);
+		}
+		f.appendChild(document.createElement("br"));
+		var b = document.createElement("button"); //input element, text
+		var buttonurl = "Post1()";
+		b.setAttribute('onClick',buttonurl);
+		b. innerHTML ="Post course";
+		f.appendChild(b);
+		//console.log(String(f));
+		document.getElementById("form2").appendChild(f);
+	}
+}
 function deleteC(url){
-	alert("Delete " +url);
+	var request = new XMLHttpRequest();
+	var Course= getCourse(url);
+	var code=Course.code
+	var jsonData = '{"code":' + JSON.stringify(code) + '}';
+	request.open("DELETE", url, false);
+	request.setRequestHeader("Authorization", "Basic " + btoa("admin:password123"));
+	request.setRequestHeader("X-CSRFToken", readCookie("csrftoken"));
+	request.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+	request.send(jsonData);
+	listCourses()
 }
 
 function save(url){
@@ -245,9 +408,33 @@ function save(url){
 	request.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
 	request.send(JSON.stringify(courseJson)); 
 	//alert(request.response);
-	window.location = "localhost:8000/courses"; 
+	listCourses()
 }
-
+function Post1(){
+	var courseJson = {};
+	courseJson.name = document.getElementById("courseForm").elements["name"].value;
+	courseJson.code = document.getElementById("courseForm").elements["code"].value;
+	courseJson.changes = document.getElementById("courseForm").elements["changes"].value;
+	courseJson.languages = document.getElementById("courseForm").elements["languages"].value;
+	courseJson.credit = document.getElementById("courseForm").elements["credit"].value;
+	courseJson.size = document.getElementById("courseForm").elements["size"].value;
+	courseJson.p1 = document.getElementById("courseForm").elements["p1"].value;
+	courseJson.p2 = document.getElementById("courseForm").elements["p2"].value;
+	courseJson.p3 = document.getElementById("courseForm").elements["p3"].value;
+	courseJson.p4 = document.getElementById("courseForm").elements["p4"].value;
+	courseJson.p5 = document.getElementById("courseForm").elements["p5"].value;
+	courseJson.total = document.getElementById("courseForm").elements["total"].value;
+	courseJson.curriculumid = document.getElementById("courseForm").elements["Curriculum"].value;
+	//alert(JSON.stringify(courseJson));
+	var request = new XMLHttpRequest();
+	request.open("POST", "http://localhost:8111/Courses/" , false);
+	request.setRequestHeader("Authorization", "Basic " + btoa("admin:password123"));
+	request.setRequestHeader("X-CSRFToken", readCookie("csrftoken"));
+	request.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+	request.send(JSON.stringify(courseJson)); 
+	//alert(request.response);
+	listCourses()
+}
 function readCookie(name) {
  var nameEQ = encodeURIComponent(name) + "=";
  var ca = document.cookie.split(';');

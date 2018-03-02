@@ -1,3 +1,5 @@
+<button onclick="post()"> ADD NEW PERSON</button>
+<div id="form2"></div>
 <div id="Person"></div>
 <div id="form"></div>
 <script>
@@ -36,7 +38,44 @@ function getPerson(url){
 	arrayOfPerson = JSON.parse(request.responseText);
 	return arrayOfPerson;
 }
+function post(){
+	if(1){
+		var Person = {code:"", name:""};
+		//create form
+		var f = document.createElement("form");
+		f.setAttribute("id", "PersonForm");
+		var i = document.createElement("input"); //input element, text
+		i.setAttribute('type',"text");
+		i.setAttribute('value',Person.code);
+		i.setAttribute('name',"code");
+		var i3 = document.createElement("input"); //input element, text
+		i3.setAttribute('type',"text");
+		i3.setAttribute('value',Person.name);
+		i3.setAttribute('name',"name");
 
+
+
+		var l = document.createElement("label"); //input element, text
+		l.innerHTML = "Code";
+		f.appendChild(l);
+		l.setAttribute("for",i);
+		f.appendChild(i);
+		f.appendChild(document.createElement("br"));
+		var l3 = document.createElement("label"); //input element, text
+		l3.innerHTML = "name";
+		f.appendChild(l3);
+		l.setAttribute("for",i3);
+		f.appendChild(i3);
+		f.appendChild(document.createElement("br"));
+		var b = document.createElement("button"); //input element, text
+		var buttonurl = "Post1()";
+		b.setAttribute('onClick',buttonurl);
+		b. innerHTML ="Post Person";
+		f.appendChild(b);
+		//console.log(String(f));
+		document.getElementById("form2").appendChild(f);
+	}
+}
 
 function edit(url){
 	if(url!=null){
@@ -83,9 +122,31 @@ function edit(url){
 }
 
 function deleteC(url){
-	alert("Delete " +url);
+	var request = new XMLHttpRequest();
+	var Person= getPerson(url);
+	var code=Person.code
+	var jsonData = '{"code":' + JSON.stringify(code) + '}';
+	request.open("DELETE", url, false);
+	request.setRequestHeader("Authorization", "Basic " + btoa("admin:password123"));
+	request.setRequestHeader("X-CSRFToken", readCookie("csrftoken"));
+	request.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+	request.send(jsonData);
+	listPersons()
 }
-
+function Post1(){
+	var PersonJson = {};
+	PersonJson.code = document.getElementById("PersonForm").elements["code"].value;
+	PersonJson.name = document.getElementById("PersonForm").elements["name"].value;
+	//alert(JSON.stringify(PersonJson));
+	var request = new XMLHttpRequest();
+	request.open("POST","http://localhost:8111/Persons/" , false);
+	request.setRequestHeader("Authorization", "Basic " + btoa("admin:password123"));
+	request.setRequestHeader("X-CSRFToken", readCookie("csrftoken"));
+	request.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+	request.send(JSON.stringify(PersonJson)); 
+	//alert(request.response);
+	listPersons()
+}
 function save(url){
 	var PersonJson = {};
 	PersonJson.url = document.getElementById("PersonForm").elements["url"].value;
@@ -99,7 +160,7 @@ function save(url){
 	request.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
 	request.send(JSON.stringify(PersonJson)); 
 	//alert(request.response);
-	window.location = "localhost:8000/Persons"; 
+	listPersons()
 }
 
 function readCookie(name) {
