@@ -4,11 +4,18 @@ from tutorial.quickstart import views
 
 router = routers.DefaultRouter()
 router.register(r'users', views.UserViewSet)
+router.register(r'Courses', views.CourseViewSet)
 router.register(r'groups', views.GroupViewSet)
-router.register(r'companies', views.CompanyViewSet)
-router.register(r'countries', views.CountryViewSet)
-router.register(r'cities', views.CityViewSet)
-router.register(r'customers', views.CustomerViewSet)
+router.register(r'Curriculums', views.CurriculumViewSet)
+router.register(r'Degreeprograms', views.DegreeprogramViewSet)
+router.register(r'Implementations', views.ImplementationViewSet)
+router.register(r'Persons', views.PersonViewSet)
+router.register(r'PersonDegreeprograms', views.PersonDegreeprogramViewSet)
+router.register(r'PersonImplementations', views.PersonImplementationViewSet)
+router.register(r'Rooms', views.RoomViewSet)
+router.register(r'RoomImplementations', views.RoomImplementationViewSet)
+router.register(r'Subgroups', views.SubgroupViewSet)
+router.register(r'SubgroupImplementations', views.SubgroupImplementationViewSet)
 
 # Wire up our API using automatic URL routing.
 # Additionally, we include login URLs for the browsable API.
