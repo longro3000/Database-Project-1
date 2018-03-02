@@ -6,6 +6,13 @@ Download setup.bat
 
 run it
 
+
+#TO LAUNCH APPLICATION
+
+Download run.bat
+
+run it
+
 create your own user account with:
 
 Username
@@ -13,12 +20,6 @@ Username
 Password
 
 Email
-
-#TO LAUNCH APPLICATION
-
-Download run.bat
-
-run it
 
 go to web browser and enter "localhost:8111"
 
